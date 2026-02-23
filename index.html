@@ -192,26 +192,20 @@
 </body>
 <script>
     var hidethis1=0;
+    var hidethis2=0;
 
-    let valTotal=8;
-    let valInterview=0;
-    let valRejected=0;
-    let valJob=8;
-    //alert("");valJob
+    var valTotal=8;
+    var valInterview=0;
+    var valRejected=0;
+    var valJob=8;
+
   function hideBox(val) {
-    hidethis1=hidethis1+1;
-
-
-    var mog=valTotal;
-
-    if(hidethis1==1){valTotal=valTotal-1; valJob=valJob-1;}
+    valTotal=valTotal-1;
+    valInterview=valInterview+1;
+    valJob=valJob-1;
 
     const card=document.querySelectorAll(".card");
     card[val-1].classList.add("hidden");
-    
-    if(mog!=valTotal){valInterview=valInterview+1;}
-    else{valRejected=(valRejected-1); valInterview=valInterview+1;}
-    
     document.getElementsByClassName("valTotal")[0].innerText=valTotal;
     document.getElementsByClassName("valJob")[0].innerText=valJob;
     document.getElementsByClassName("valInterview")[0].innerText=valInterview;
@@ -219,14 +213,12 @@
   }
 
     function hideBoxR(val) {
-        var mog=valTotal;
-        if(hidethis1==1){valTotal=valTotal-1; valJob=valJob-1;}
-        if(mog!=valTotal){valRejected=valRejected-1;}
-        else{valInterview=valInterview-1;valRejected=valRejected+1;}
+        valTotal=valTotal-1;
+        valRejected=valRejected+1;
+        valJob=valJob-1;
 
         const card=document.querySelectorAll(".card");
         card[val-1].classList.add("hidden");
-        valRejected=valRejected+1;
         document.getElementsByClassName("valTotal")[0].innerText=valTotal;
         document.getElementsByClassName("valJob")[0].innerText=valJob;
         document.getElementsByClassName("valRejected")[0].innerText=valRejected;
@@ -269,7 +261,6 @@
         for(let i=0;i<8;i++){
             if(document.getElementsByClassName("apOrNot")[i].innerText=="Rejected"){
                 card[i].classList.remove("hidden");
-                alert(document.getElementsByClassName("rejBtn")[i].classList);
                 document.getElementsByClassName("rejBtn")[i].classList.add("hidden");
             }
             else{
@@ -294,22 +285,5 @@
             }
         }
     }
-
-
-    // for(let i=0;i<8;i++){
-    //     if(document.getElementsByClassName("apOrNot")[i].innerText=="Rejected"){
-            
-    //     }
-    //     else{
-    //         document.getElementsByClassName("rejBtn")[i].disabled = false;
-    //     }
-    //     if(document.getElementsByClassName("apOrNot")[i].innerText=="Applied"){
-    //         alert("hi");
-    //         document.getElementsByClassName("appBtn")[i].disabled = true;
-    //     }
-    //     else{
-    //         document.getElementsByClassName("appBtn")[i].disabled = false;
-    //     }
-    // }
 </script>
 </html>

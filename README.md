@@ -1,5 +1,5 @@
 
-# JavaScript DOM & Events – Q&A
+# JavaScript DOM & Events – Q&A (Module 25, Milestone 4)
 
 ## 1. What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
