@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- daisyUi cdn
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
+    <!-- tailwindCss -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Job application tracker</title>
@@ -12,15 +15,15 @@
         <h1 class="font-bold text-3xl">Job Application Tracker</h1>
         <div class="flex justify-between pt-4 pb-4">
             <div class="w-[245px] bg-[#FFFFFF] p-2.5 rounded-[5px]">
-                <p class="text-xs">Total<br/><span class="text-base text-[#002C5C] font-extrabold">0</span></p>
+                <p class="text-xs">Total<br/><span class="text-base text-[#002C5C] font-extrabold valTotal">8</span></p>
             </div>
             <div class="w-[245px] bg-[#FFFFFF] p-2.5 rounded-[5px]">
-                <p class="text-xs">Interview<br/><span class="text-base text-[#10B981] font-extrabold">0</span></p>
+                <p class="text-xs">Interview<br/><span class="text-base text-[#10B981] font-extrabold valInterview">0</span></p>
             </div>
             <div class="w-[245px] bg-[#FFFFFF] p-2.5 rounded-[5px]">
-                <p class="text-xs">Rejected<br/><span class="text-base text-[#EF4444] font-extrabold">0</span></p>
+                <p class="text-xs">Rejected<br/><span class="text-base text-[#EF4444] font-extrabold valRejected">0</span></p>
             </div>
-        </div>
+        </div> 
     </header>
 
     <hr/>
@@ -29,162 +32,265 @@
 
         <div class="flex justify-between">
             <h1 class="font-bold text-xl">Available Jobs</h1>
-            <p class="text-sm">8 jobs</p>
+            <p class="text-sm valJob">8 jobs</p>
         </div>
 
         <div class="pt-2 flex flex-start gap-5">
             <div class="w-20 bg-[#FFFFFF] text-center rounded-[5px]">
-                <p class="p-2">All</p>
+                <p class="p-2" onclick="All()">All</p>
             </div>
             <div class="w-20 bg-[#FFFFFF] text-center rounded-[5px]">
-                <p class="p-2">Interview</p>
+                <p class="p-2" onclick="interV()">Interview</p>
             </div>
             <div class="w-20 bg-[#FFFFFF] text-center rounded-[5px]">
-                <p class="p-2">Rejected</p>
+                <p class="p-2" onclick="rejV()">Rejected</p>
             </div>
         </div>
 
         <!-- Card div started from here -->
         <div class="pt-2">
 
-            <div class="bg-[#FFFFFF] flex justify-between mt-5 mb-5 rounded-[5px]">
+            <div class="bg-[#FFFFFF] flex justify-between mt-5 mb-5 rounded-[5px] card">
                 <div class="p-5">
                     <h1 class="text-[#002C5C]">Mobile First Corp</h1>
                     <p class="text-[#64748B]">React Native Developer</p> <br/>
                     <p class="text-[#64748B]">Remote • Full-time • $130,000 - $175,000</p>
                     <div class="mt-6 mb-6">
-                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px]">Not Applied</p>
+                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px] apOrNot">Not Applied</p>
                     </div>
                     <p class="text-[#323B49]">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p><br/>
                     <div>
-                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px]">INTERVIEW</button>
-                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px]">REJECTED</button>
+                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px] apOrNot" onclick="hideBox(1)">INTERVIEW</button>
+                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px] rejBtn" onclick="hideBoxR(1)">REJECTED</button>
                     </div>
                 </div>
-                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2"><i class="fa-regular fa-trash-can"></i></div></div>
+                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2" onclick="deleteCard(1)"><i class="fa-regular fa-trash-can"></i></div></div>
             </div>
 
-            <div class="bg-[#FFFFFF] flex justify-between mt-5 mb-5 rounded-[5px]">
+            <div class="bg-[#FFFFFF] flex justify-between mt-5 mb-5 rounded-[5px] card">
                 <div class="p-5">
                     <h1 class="text-[#002C5C]">WebFlow Agency</h1>
                     <p class="text-[#64748B]">Web Designer & Developer</p> <br/>
                     <p class="text-[#64748B]">Los Angeles, CA • Part-time • $80,000 - $120,000</p>
                     <div class="mt-6 mb-6">
-                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px]">Not Applied</p>
+                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px] apOrNot">Not Applied</p>
                     </div>
                     <p>Create stunning web experiences for high-profile clients. Must have portfolio and experience with modern web design trends.</p><br/>
                     <div>
-                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px]">INTERVIEW</button>
-                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px]">REJECTED</button>
+                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px] apOrNot" onclick="hideBox(2)">INTERVIEW</button>
+                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px] rejBtn" onclick="hideBoxR(2)">REJECTED</button>
                     </div>
                 </div>
-                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2"><i class="fa-regular fa-trash-can"></i></div></div>
+                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2" onclick="deleteCard(2)"><i class="fa-regular fa-trash-can"></i></div></div>
             </div>
 
-            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px]">
+            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px] card">
                 <div class="p-5">
                     <h1 class="text-[#002C5C]">DataViz Solutions</h1>
                     <p class="text-[#64748B]">Data Visualization Specialist</p> <br/>
                     <p class="text-[#64748B]">Boston, MA • Full-time • $125,000 - $165,000</p>
                     <div class="mt-6 mb-6">
-                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px]">Not Applied</p>
+                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px] apOrNot">Not Applied</p>
                     </div>
                     <p>Transform complex data into compelling visualizations. Required skills: D3.js, React, and strong analytical thinking. </p><br/>
                     <div>
-                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px]">INTERVIEW</button>
-                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px]">REJECTED</button>
+                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px] apOrNot" onclick="hideBox(3)">INTERVIEW</button>
+                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px] rejBtn" onclick="hideBoxR(3)">REJECTED</button>
                     </div>
                 </div>
-                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2"><i class="fa-regular fa-trash-can"></i></div></div>
+                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2" onclick="deleteCard(3)"><i class="fa-regular fa-trash-can"></i></div></div>
             </div>
 
-            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px]">
+            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px] card">
                 <div class="p-5">
                     <h1 class="text-[#002C5C]">CloudFirst Inc</h1>
                     <p class="text-[#64748B]">Backend Developer</p> <br/>
                     <p class="text-[#64748B]">Seattle, WA • Full-time • $140,000 - $190,000</p>
                     <div class="mt-6 mb-6">
-                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px]">Not Applied</p>
+                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px] apOrNot">Not Applied</p>
                     </div>
                     <p>Design and maintain scalable backend systems using Python and AWS. Work with modern DevOps practices and cloud infrastructure.</p><br/>
                     <div>
-                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px]">INTERVIEW</button>
-                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px]">REJECTED</button>
+                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px] apOrNot" onclick="hideBox(4)">INTERVIEW</button>
+                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px] rejBtn" onclick="hideBoxR(4)">REJECTED</button>
                     </div>
                 </div>
-                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2"><i class="fa-regular fa-trash-can"></i></div></div>
+                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2" onclick="deleteCard(4)"><i class="fa-regular fa-trash-can"></i></div></div>
             </div>
 
-            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px]">
+            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px] card">
                 <div class="p-5">
                     <h1 class="text-[#002C5C]">Innovation Labs</h1>
                     <p class="text-[#64748B]">UI/UX Engineer</p> <br/>
                     <p class="text-[#64748B]">Austin, TX • Full-time • $110,000 - $150,000</p>
                     <div class="mt-6 mb-6">
-                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px]">Not Applied</p>
+                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px] apOrNot">Not Applied</p>
                     </div>
                     <p>Create beautiful and functional user interfaces for our suite of products. Strong design skills and frontend development expertise required.</p><br/>
                     <div>
-                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px]">INTERVIEW</button>
-                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px]">REJECTED</button>
+                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px] apOrNot" onclick="hideBox(5)">INTERVIEW</button>
+                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px] rejBtn" onclick="hideBoxR(5)">REJECTED</button>
                     </div>
                 </div>
-                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2"><i class="fa-regular fa-trash-can"></i></div></div>
+                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2" onclick="deleteCard(5)"><i class="fa-regular fa-trash-can"></i></div></div>
             </div>
 
-            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px]">
+            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px] card">
                 <div class="p-5">
                     <h1 class="text-[#002C5C]">MegaCorp Solutions</h1>
                     <p class="text-[#64748B]">JavaScript Developer</p> <br/>
                     <p class="text-[#64748B]">New York, NY • Full-time • $130,000 - $170,00</p>
                     <div class="mt-6 mb-6">
-                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px]">Not Applied</p>
+                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px] apOrNot">Not Applied</p>
                     </div>
                     <p>Build enterprise applications with JavaScript and modern frameworks. We offer competitive compensation, health insurance, and professional development opportunities.</p><br/>
                     <div>
-                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px]">INTERVIEW</button>
-                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px]">REJECTED</button>
+                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px] apOrNot" onclick="hideBox(6)">INTERVIEW</button>
+                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px] rejBtn" onclick="hideBoxR(6)">REJECTED</button>
                     </div>
                 </div>
-                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2"><i class="fa-regular fa-trash-can"></i></div></div>
+                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2" onclick="deleteCard(6)"><i class="fa-regular fa-trash-can"></i></div></div>
             </div>
 
-            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px]">
+            <div class="bg-[#FFFFFF] flex justify-between  mt-5 mb-5 rounded-[5px] card">
                 <div class="p-5">
                     <h1 class="text-[#002C5C]">StartupXYZ</h1>
                     <p class="text-[#64748B]">Full Stack Engineer</p> <br/>
                     <p class="text-[#64748B]">Remote • Full-time • $120,000 - $160,000</p>
                     <div class="mt-6 mb-6">
-                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px]">Not Applied</p>
+                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px] apOrNot">Not Applied</p>
                     </div>
                     <p>Join our fast-growing startup and work on our core platform. Experience with Node.js and React required. Great benefits and equity package included.</p><br/>
                     <div>
-                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px]">INTERVIEW</button>
-                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px]">REJECTED</button>
+                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px] apOrNot" onclick="hideBox(7)">INTERVIEW</button>
+                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px] rejBtn" onclick="hideBoxR(7)">REJECTED</button>
                     </div>
                 </div>
-                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2"><i class="fa-regular fa-trash-can"></i></div></div>
+                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2" onclick="deleteCard(7)"><i class="fa-regular fa-trash-can"></i></div></div>
             </div>
 
-            <div class="bg-[#FFFFFF] flex justify-between mt-5 mb-5 rounded-[5px]">
+            <div class="bg-[#FFFFFF] flex justify-between mt-5 mb-5 rounded-[5px] card">
                 <div class="p-5">
                     <h1 class="text-[#002C5C]">TechCorp Industries</h1>
                     <p class="text-[#64748B]">Senior Frontend Developer</p> <br/>
                     <p class="text-[#64748B]">San Francisco, CA • Full-time • $130,000 - $175,000</p>
                     <div class="mt-6 mb-6">
-                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px]">Not Applied</p>
+                        <p class="bg-[#EEF4FF] inline p-3 text-[#002C5C] rounded-[5px] apOrNot">Not Applied</p>
                     </div>
                     <p>We are looking for an experienced Frontend Developer to build scalable web applications using React and TypeScript. You will work with a talented team on cutting-edge projects.</p><br/>
                     <div>
-                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px]">INTERVIEW</button>
-                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px]">REJECTED</button>
+                        <button class="text-[#10B981] border border-[2px] border-[#10B981] p-2 rounded-[5px] apOrNot" onclick="hideBox(8)">INTERVIEW</button>
+                        <button class="text-[#EF4444] border border-[2px] border-[#EF4444] p-2 rounded-[5px] rejBtn" onclick="hideBoxR(8)">REJECTED</button>
                     </div>
                 </div>
-                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2"><i class="fa-regular fa-trash-can"></i></div></div>
+                <div><div class="border border-[#F1F2F4] rounded-3xl p-2 m-2" onclick="deleteCard(8)"><i class="fa-regular fa-trash-can"></i></div></div>
             </div>
 
 
         </div>
     </main>
 </body>
+<script>
+    
+
+    let valTotal=8;
+    let valInterview=0;
+    let valRejected=0;
+    let valJob=8;
+    //alert("");valJob
+  function hideBox(val) {
+    const card=document.querySelectorAll(".card");
+    card[val-1].classList.add("hidden");
+    valTotal=valTotal-1;
+    valInterview=valInterview+1;
+    valJob=valJob-1;
+    document.getElementsByClassName("valTotal")[0].innerText=valTotal;
+    document.getElementsByClassName("valJob")[0].innerText=valJob;
+    document.getElementsByClassName("valInterview")[0].innerText=valInterview;
+    document.getElementsByClassName("apOrNot")[val-1].innerText="Applied";
+  }
+
+    function hideBoxR(val) {
+        const card=document.querySelectorAll(".card");
+        card[val-1].classList.add("hidden");
+        valTotal=valTotal-1;
+        valRejected=valRejected+1;
+        valJob=valJob-1;
+        document.getElementsByClassName("valTotal")[0].innerText=valTotal;
+        document.getElementsByClassName("valJob")[0].innerText=valJob;
+        document.getElementsByClassName("valRejected")[0].innerText=valRejected;
+        document.getElementsByClassName("apOrNot")[val-1].innerText="Rejected";
+        
+    }
+
+  function deleteCard(val) {
+    const card=document.querySelectorAll(".card");
+    card[val-1].classList.add("hidden");
+    valTotal=valTotal-1;
+    valJob=valJob-1;
+    document.getElementsByClassName("valTotal")[0].innerText=valTotal;
+    document.getElementsByClassName("valJob")[0].innerText=valJob;
+  }
+
+//   Interview section
+
+    function interV() {
+        const card=document.querySelectorAll(".card");
+        for(let i=0;i<8;i++){
+            if(document.getElementsByClassName("apOrNot")[i].innerText=="Applied"){
+                card[i].classList.remove("hidden");
+                document.getElementsByClassName("appBtn")[i].classList.add("hidden");
+            }
+            else{
+                card[i].classList.add("hidden");
+                document.getElementsByClassName("appBtn")[i].classList.remove("hidden");
+            }
+        }
+    }
+
+    function rejV(){
+        const card=document.querySelectorAll(".card");
+        for(let i=0;i<8;i++){
+            if(document.getElementsByClassName("apOrNot")[i].innerText=="Rejected"){
+                card[i].classList.remove("hidden");
+                alert(document.getElementsByClassName("rejBtn")[i].classList);
+                document.getElementsByClassName("rejBtn")[i].classList.add("hidden");
+            }
+            else{
+                card[i].classList.add("hidden");
+                document.getElementsByClassName("rejBtn")[i].classList.remove("hidden");
+            }
+        }
+    }
+
+
+    function All(){
+        const card=document.querySelectorAll(".card");
+        for(let i=0;i<8;i++){
+            if(document.getElementsByClassName("apOrNot")[i].innerText=="Not Applied"){
+                card[i].classList.remove("hidden");
+            }
+            else{
+                card[i].classList.add("hidden");
+            }
+        }
+    }
+
+
+    // for(let i=0;i<8;i++){
+    //     if(document.getElementsByClassName("apOrNot")[i].innerText=="Rejected"){
+            
+    //     }
+    //     else{
+    //         document.getElementsByClassName("rejBtn")[i].disabled = false;
+    //     }
+    //     if(document.getElementsByClassName("apOrNot")[i].innerText=="Applied"){
+    //         alert("hi");
+    //         document.getElementsByClassName("appBtn")[i].disabled = true;
+    //     }
+    //     else{
+    //         document.getElementsByClassName("appBtn")[i].disabled = false;
+    //     }
+    // }
+</script>
 </html>
